@@ -1,0 +1,25 @@
+----------------
+CRT - CER Files
+----------------
+
+These files should be used if your server requires you to browse and upload your certificates into their system. Common servers that use these files are IIS, Exchange, and Plesk. 
+
+The files in this folder are .CRT files. If you need .CER files, simply use a file explorer and manually change the file extension from .CRT to .CER and you'll be all set.
+
+----------------
+Plain Text Files
+----------------
+
+These files should be used if your server or hosting provider gives you a form to copy/paste your certificates into. Common hosting providers and servers that require these kinds of files are cPanel, DirectAdmin, and WHM.
+
+----------
+PKCS7 - P7B File
+----------
+
+This file should be used if your server requires that you upload a PKCS7 or .p7b file format for installation. Common server types that require this kind of file are Azure and TomCat.
+
+-----------------
+PKCS12 - PFX File
+-----------------
+
+This file can be used to install the certificate, intermediate certificates as well as private key on Windows server. Please note that the PKCS12 file provided has no password.

@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+}
+
+.form-floating {
+    margin-top: .5em;
+}
+
+.badge {
+    position: relative;
+    bottom: 40px !important;
+    left: calc(100% - 35px) !important;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.extra {
+    margin-bottom: -23px;
+}
