@@ -30,11 +30,18 @@ router.post('/entry', async (req,res) => {
     for (let gift in giftlist){
         newList.gifts.push(giftlist[gift]);
     }
-    await newList.save();
+    let user = await newList.save();
     // res.send(giftlist);
     
-    res.render('picker/index')
+    res.redirect(`/picker/confirm/${user._id}`);
 });
+
+router.get('/confirm/:id', async (req, res) => {
+    const user = await giftLists.findById(req.params.id);
+    if (user){
+        res.render('picker/confirm', {user});
+    }
+})
 
 router.get('/list', async (req, res) => {
     const peeps = await giftLists.find({});

@@ -21,20 +21,20 @@ mongoose.connect('mongodb://127.0.0.1:27017/giftLists').then((value) => {
 
 app.set('view engine', 'ejs');
 
-app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded - enables req.body
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded - enables req.body
 app.use(express.static(path.join(__dirname, 'data')));
 
 
 app.get('/', (req, res) => {
-    res.render('index')
-})
+    res.render('index');
+});
 
-app.use('/picker', pickRouter)
+app.use('/picker', pickRouter);
 
 try{
     https.createServer(((options.length) ? options : (options = {})), app).listen(443, (req, res) => {
-        console.log('Listening on 443')
+        console.log('Listening on 443');
     });
 }catch(e){
     app.listen(3000, () => {
