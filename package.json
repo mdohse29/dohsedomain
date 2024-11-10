@@ -1,0 +1,16 @@
+{
+  "name": "gift-picker",
+  "version": "1.0.0",
+  "description": "Basically like a white elephant, people add them selves with some gift ideas. Then someone can randomly pick a person from the pool to by a gift for and get a few gift ideas for that person.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MR D",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.0"
+  }
+}
