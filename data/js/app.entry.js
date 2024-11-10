@@ -4,14 +4,13 @@ function inputNum(){
 }
 
 document.querySelector('#cancel').addEventListener('click', () => {
-    let url = location.href.substring(0, location.href.lastIndexOf('/') + 1);
     let inputs = document.querySelectorAll('input');
 
     for (let i of inputs){
         i.value = '';
     }
 
-    window.open(url + 'picker', '_self');
+    window.open('/picker', '_self');
 });
 
 document.querySelector('#add').addEventListener('click', () => {
