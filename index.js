@@ -6,9 +6,9 @@ const path = require('path');
 const mongoose = require('mongoose');
 const {pickRouter} = require('./routes/picker')
 const options = {
-    // key: fs.readFileSync('./certs/PrivateKey.pem'),
-    // cert: fs.readFileSync('./certs/dohsedomain.com_2024.crt'),
-    // ca: fs.readFileSync('./certs/IntermediateBundle.crt')
+    key: fs.readFileSync('./certs/PrivateKey.pem'),
+    cert: fs.readFileSync('./certs/dohsedomain.com_2024.crt'),
+    ca: fs.readFileSync('./certs/IntermediateBundle.crt')
   };
 
 mongoose.connect('mongodb://127.0.0.1:27017/giftLists').then((value) => {
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 app.use('/picker', pickRouter);
 
 try{
-    https.createServer(((options.length) ? options : (options = {})), app).listen(443, (req, res) => {
+    https.createServer(options, app).listen(443, (req, res) => {
         console.log('Listening on 443');
     });
 }catch(e){
