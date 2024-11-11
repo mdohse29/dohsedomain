@@ -10,7 +10,7 @@ document.querySelector('#cancel').addEventListener('click', () => {
         i.value = '';
     }
 
-    window.open('/picker', '_self');
+    window.open('/picker/list', '_self');
 });
 
 document.querySelector('#add').addEventListener('click', () => {

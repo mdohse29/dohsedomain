@@ -4,11 +4,12 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
+const ejsMate = require('ejs-mate');
 const {pickRouter} = require('./routes/picker')
 const options = {
-    key: fs.readFileSync('./certs/PrivateKey.pem'),
-    cert: fs.readFileSync('./certs/dohsedomain.com_2024.crt'),
-    ca: fs.readFileSync('./certs/IntermediateBundle.crt')
+    // key: fs.readFileSync('./certs/PrivateKey.pem'),
+    // cert: fs.readFileSync('./certs/dohsedomain.com_2024.crt'),
+    // ca: fs.readFileSync('./certs/IntermediateBundle.crt')
   };
 
 mongoose.connect('mongodb://127.0.0.1:27017/giftLists').then((value) => {
@@ -20,6 +21,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/giftLists').then((value) => {
 
 
 app.set('view engine', 'ejs');
+app.engine('ejs', ejsMate);
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded - enables req.body
@@ -34,12 +36,9 @@ app.get('/', (req, res) => {
 
 app.use('/picker', pickRouter);
 
-try{
-    https.createServer(options, app).listen(443, (req, res) => {
-        console.log('Listening on 443');
-    });
-}catch(e){
+    // https.createServer(options, app).listen(443, (req, res) => {
+    //     console.log('Listening on 443');
+    // });
     app.listen(3000, () => {
         console.log('Listening on 3000');
     });
-}
