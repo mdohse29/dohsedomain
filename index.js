@@ -7,9 +7,9 @@ const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const {pickRouter} = require('./routes/picker')
 const options = {
-    // key: fs.readFileSync('./certs/PrivateKey.pem'),
-    // cert: fs.readFileSync('./certs/dohsedomain.com_2024.crt'),
-    // ca: fs.readFileSync('./certs/IntermediateBundle.crt')
+    key: fs.readFileSync('./certs/PrivateKey.pem'),
+    cert: fs.readFileSync('./certs/dohsedomain.com_2024.crt'),
+    ca: fs.readFileSync('./certs/IntermediateBundle.crt')
   };
 
 mongoose.connect('mongodb://127.0.0.1:27017/giftLists').then((value) => {
@@ -36,9 +36,9 @@ app.get('/', (req, res) => {
 
 app.use('/picker', pickRouter);
 
-    // https.createServer(options, app).listen(443, (req, res) => {
-    //     console.log('Listening on 443');
-    // });
-    app.listen(3000, () => {
-        console.log('Listening on 3000');
+    https.createServer(options, app).listen(443, (req, res) => {
+        console.log('Listening on 443');
     });
+    // app.listen(3000, () => {
+    //     console.log('Listening on 3000');
+    // });
