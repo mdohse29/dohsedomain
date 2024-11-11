@@ -6,7 +6,7 @@ const Schema = new mongoose.Schema({
     name:String,
     email:String,
     hasBeenPicked: Boolean,
-    gifting: {
+    gifter: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'giftLists'
     },
@@ -41,12 +41,53 @@ router.get('/confirm/:id', async (req, res) => {
     if (user){
         res.render('picker/confirm', {user});
     }
+});
+
+router.get('/edit/:id', async (req, res) => {
+    const user = await giftLists.findById(req.params.id);
+    if (user){
+        res.render('picker/edit', {user});
+    }
+});
+
+router.post('/edit/:id', async (req, res) => {
+    const found = await giftLists.findById(req.params.id);
+    const {giftlist: update} = req.body;
+
+    if (found){
+
+        found.name = update.name;
+        found.email = update.email;
+        found.gifts = [];
+        delete update.name;
+        delete update.email;
+
+        for (let gift in update){
+            found.gifts.push(update[gift]);
+        }
+
+        let user = await found.save();
+
+        res.render('picker/confirm', {user});
+    }
+});
+
+router.get('/search', (req, res) => {
+    res.render('picker/search');
+});
+
+router.post('/search', async (req, res) => {
+    const user = await giftLists.findOne({email:req.body.email});
+
+    if (user){
+        res.redirect(`/picker/edit/${user._id}`);
+    }
 })
 
 router.get('/list', async (req, res) => {
     const peeps = await giftLists.find({});
 
     res.render('picker/list', {peeps});
-})
+});
 
 module.exports.pickRouter = router;

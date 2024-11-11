@@ -17,3 +17,26 @@ h1 {
 .extra {
     margin-bottom: -23px;
 }
+
+.gift-item {
+    display: flex;
+    margin-left: 25px;
+    align-items: center;
+}
+
+.gift-item > a {
+    color: black;
+    text-decoration: none;
+}
+
+.gift-item > a:hover {
+    color: var(--bs-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+
+
+.gift-item-img {
+    margin-right: 15px;
+}

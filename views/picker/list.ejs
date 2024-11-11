@@ -9,20 +9,39 @@
 </head>
 <body>
     <div class="container">
-        <% if (peeps){ %>
-            <% for (let peep of peeps) {%>
-                <div class="card">
-                    <div class="card-body">
-                        <p><%= peep.name %></p>
-                        <ul>
-                            <% for (let gift of peep.gifts) {%>
-                                <li><%= gift %></li>
-                            <% } %>
-                        </ul>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow-lg mt-5">
+                    <div class="card-header text-center">
+                        <h1 class="title">The Gift List</h1>
+                        <p>Just to recap... The maximum amount anyone can spend on any person picked is<br>$75 (tax not included).</p>
+                        <% if (peeps.length) {%>
+                            <p><sub>Each list item below is ready to search for convenience.<br>Just click/tap the item to quick search Google, if you want to.</sub></p>
+                        <% } %>
                     </div>
-                </div>
-            <% } %>
-        <% } %>
+                    <div class="card-body p-4">
+                        <% if (peeps.length){ %>
+                            <p><a href="/picker/search">Edit Your List</a></p>
+                            <% for (let peep of peeps) {%>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p><%= peep.name %> - <%= peep._id %><%= ((peep.hasBeenPicked) ? ' - Has already been picked' : ' - Has not been picked') %></p>
+                                        <% for (let gift of peep.gifts) {%>
+                                            <span class="gift-item mb-2">
+                                                <img src="/img/listIcon-gift.png" class="d-inline gift-item-img" alt="Gift Icon">
+                                                <a href="https://www.google.com/search?q=<%= gift.replaceAll(' ', '+') %>" target="_blank"><%= gift %></a>
+                                            </span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>        
+            </div>
+        </div>
     </div>
+    <script src="/js/picker/app.list.js"></script>
+    <span style="font-size: 8px;color: transparent;bottom: 0;">Created By MR D</span>
 </body>
 </html>

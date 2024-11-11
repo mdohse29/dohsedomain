@@ -12,46 +12,46 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <h1>Enter Gift Ideas</h1>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="card shadow-lg mt-5">
-                    <div class="card-body ps-4 pe-4 pb-0">
-                        <p>If you wish to be a part of the family gift exchange, please fill out the following form. The maximum amount anyone can spend on any one person is $75 (tax not included)</p>
-                        <p><sub>** FYI: No data is collected by anyone other than me, MR D. And Only the data required for this form I created. This is not a google form, it is 100% custom created and served privately by me. **</sub></p>
+                    <div class="card-header ps-4 pe-4 pb-0 text-center">
+                        <h1 class="title">Enter Gift List</h1>
+                        <p>If you wish to be a part of the family gift exchange, please fill out the following form. The maximum amount anyone can spend on any person picked is<br>$75 (tax not included).</p>
+                        <p><sub><span style="background-color: var(--bs-warning)">**</span> FYI: No data is collected by anyone other than me, MR D, and ONLY the data required for this form I created. This is not a google form, it is 100% custom created and served privately by me. <span style="background-color: var(--bs-warning)">**</span></sub></p>
                     </div>
                     <div class="card-body p-4">
                         <form action="/picker/entry" method="post">
                             <div class="inputs">
                                 <div class="form-floating">
                                     <input type="text" id="name" class="form-control" name="giftlist[name]" placeholder="Enter name" required>
-                                    <label for="name">Name<span style="color:red;">*</span></label>
+                                    <label for="name">Name</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="email" name="giftlist[email]" id="email" class="form-control" placeholder="Enter email" required>
-                                    <label for="email">E-mail<span style="color:red;">*</span></label>
+                                    <label for="email">E-mail</label>
                                 </div>
                                 <hr>
                                 <div class="form-floating">
                                     <input type="text" name="giftlist[gift1]" id="gift1" class="form-control" placeholder="Gift Idea" required>
-                                    <label for="gift1">Gift 1<span style="color:red;">*</span></label>
+                                    <label for="gift1">Gift 1</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="text" name="giftlist[gift2]" id="gift2" class="form-control" placeholder="Gift Idea" required>
-                                    <label for="gift2">Gift 2<span style="color:red;">*</span></label>
+                                    <label for="gift2">Gift 2</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="text" name="giftlist[gift3]" id="gift3" class="form-control" placeholder="Gift Idea" required>
-                                    <label for="gift3">Gift 3<span style="color:red;">*</span></label>
+                                    <label for="gift3">Gift 3</label>
                                 </div>
                             </div>
                             <hr>
                             <div class="btn-group d-flex">
-                                <button id="add" type="button" class="btn btn-primary">+ Gift Idea</button>
-                                <button class="btn btn-primary">Submit</button>
-                                <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
+                                <button id="add" type="button" class="btn btn-primary" title="Add an extra gift idea!">+ Gift Idea</button>
+                                <button class="btn btn-primary" title="Submit your gift list!">Submit</button>
+                                <button id="cancel" type="button" class="btn btn-danger" title="Never Mind!">Cancel</button>
                             </div>
                         </form>
                     </div>
@@ -60,6 +60,6 @@
         </div>
     </div>
     <span style="font-size: 8px;color: transparent;bottom: 0;">Created By MR D</span>
-    <script src="/js/app.entry.js"></script>
+    <script src="/js/picker/app.entry.js"></script>
 </body>
 </html>

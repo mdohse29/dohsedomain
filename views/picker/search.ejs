@@ -13,17 +13,24 @@
             <div class="col-lg-6">
                 <div class="card shadow-lg mt-5">
                     <div class="card-header text-center">
-                        <h1 class="h1">The Picker</h1>
-                        <h3 class="h3">Under Construction</h3>
+                        <h1 class="h1">Search for List to Edit</h1>
                     </div>
                     <div class="card-body p-4">
-                        <a href="/picker/list">The List</a>
+                        <p>Enter the Email address you used to add your list.</p>
+                        <form action="/picker/search/" method="post">
+                            <div class="form-floating mb-5">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email Address">
+                                <label for="email">Enter Email Address</label>
+                            </div>
+                            <div class="btn-group d-flex">
+                                <button class="btn btn-primary">Search</button>
+                            </div>
+                        </form>
                     </div>
                 </div>        
             </div>
         </div>
     </div>
-    <script src="/js/picker/app.list.js"></script>
     <span style="font-size: 8px;color: transparent;bottom: 0;">Created By MR D</span>
 </body>
 </html>

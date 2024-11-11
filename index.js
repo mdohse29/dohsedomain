@@ -27,6 +27,8 @@ app.use(express.static(path.join(__dirname, 'data')));
 
 
 app.get('/', (req, res) => {
+    // res.redirect('https://mdohse29.github.io/construction.html');
+    // res.sendStatus(301);
     res.render('index');
 });
 
