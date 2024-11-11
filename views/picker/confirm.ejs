@@ -20,9 +20,11 @@
                 <div class="card shadow-lg mt-5">
                     <div class="card-body p-4">
                         <p>Hello <%= user.name %>, please confirm your gift entries. If you would like to change something, click edit to go back and edit your entries.</p>
+                        <hr>
                         <% for (let gift of user.gifts) {%>
                             <p style="margin-left: 25px;"><%= gift %></p>
                         <% } %>
+                        <hr>
                         <div class="btn-group d-flex">
                             <button id="edit" type="button" class="btn btn-danger" loc="/picker/edit/<%= user._id %>">Edit</button>
                             <button id="confirm" type="button" class="btn btn-success" loc="/picker/list">Confirm</button>
