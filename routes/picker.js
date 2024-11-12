@@ -78,19 +78,23 @@ router.get('/search', (req, res) => {
 
 router.post('/search', async (req, res) => {
     let {lookup} = req.body;
-    let user = null;
+    let user = await giftLists.findOne({email:lookup});
 
-    if (lookup){
-        if (lookup.includes('@')){
-            user = await giftLists.findOne({email:lookup});
-        }
-
-        if (user){
-            res.redirect(`/picker/edit/${user._id}`)
-        }else{
-            res.redirect(`/picker/edit/${lookup}`)
+    if (user){
+        res.redirect(`/picker/edit/${user._id}`);
+    }else{
+        try{
+            user = await giftLists.findOne({_id: lookup});
+            if (user){
+                res.redirect(`/picker/edit/${lookup}`);
+            }else{
+                res.redirect('/picker/list');
+            }
+        }catch(e){
+            res.redirect('/picker/list');
         }
     }
+    
 })
 
 router.get('/list', async (req, res) => {
