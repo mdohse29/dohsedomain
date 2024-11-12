@@ -24,7 +24,7 @@ router.get('/entry', (req, res) => {
 
 router.post('/entry', async (req,res) => {
     const {giftlist} = req.body;
-    let newList = new giftLists({name:giftlist.name, email:giftlist.email, hasBeenPicked: false});
+    let newList = new giftLists({name:giftlist.name, email:giftlist.email.toLowerCase(), hasBeenPicked: false});
     delete giftlist.name;
     delete giftlist.email;
     for (let gift in giftlist){
@@ -57,7 +57,7 @@ router.post('/edit/:id', async (req, res) => {
     if (found){
 
         found.name = update.name;
-        found.email = update.email;
+        found.email = update.email.toLowerCase();
         found.gifts = [];
         delete update.name;
         delete update.email;
@@ -78,7 +78,8 @@ router.get('/search', (req, res) => {
 
 router.post('/search', async (req, res) => {
     let {lookup} = req.body;
-    let user = await giftLists.findOne({email:lookup});
+
+    let user = await giftLists.findOne({email:lookup.toLowerCase()});
 
     if (user){
         res.redirect(`/picker/edit/${user._id}`);
@@ -86,7 +87,7 @@ router.post('/search', async (req, res) => {
         try{
             user = await giftLists.findOne({_id: lookup});
             if (user){
-                res.redirect(`/picker/edit/${lookup}`);
+                res.redirect(`/picker/edit/${lookup.toLowerCase()}`);
             }else{
                 res.redirect('/picker/list');
             }
