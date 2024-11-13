@@ -10,11 +10,11 @@
                         <form action="/picker/edit/<%= user._id %>" method="post">
                             <div class="inputs">
                                 <div class="form-floating">
-                                    <input type="text" id="name" class="form-control" name="giftlist[name]" placeholder="Enter name" value="<%= user.name %>" required>
+                                    <input type="text" id="name" class="form-control" name="user[name]" placeholder="Enter name" value="<%= user.name %>" required>
                                     <label for="name">Name</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="email" name="giftlist[email]" id="email" class="form-control" placeholder="Enter email" value="<%= user.email %>" required>
+                                    <input type="email" name="user[email]" id="email" class="form-control" placeholder="Enter email" value="<%= user.email %>" required>
                                     <label for="email">E-mail</label>
                                 </div>
                                 <hr>

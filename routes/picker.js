@@ -23,17 +23,16 @@ router.get('/entry', (req, res) => {
 });
 
 router.post('/entry', async (req,res) => {
-    const {giftlist} = req.body;
-    let newList = new giftLists({name:giftlist.name, email:giftlist.email.toLowerCase(), hasBeenPicked: false});
-    delete giftlist.name;
-    delete giftlist.email;
+    const {giftlist, user} = req.body;
+    let newList = new giftLists({name:user.name, email:user.email.toLowerCase(), hasBeenPicked: false});
+
     for (let gift in giftlist){
         newList.gifts.push(giftlist[gift]);
     }
-    let user = await newList.save();
+    let newUser = await newList.save();
     // res.send(giftlist);
     
-    res.redirect(`/picker/confirm/${user._id}`);
+    res.redirect(`/picker/confirm/${newUser._id}`);
 });
 
 router.get('/confirm/:id', async (req, res) => {
@@ -52,18 +51,16 @@ router.get('/edit/:id', async (req, res) => {
 
 router.post('/edit/:id', async (req, res) => {
     const found = await giftLists.findById(req.params.id);
-    const {giftlist: update} = req.body;
+    const {giftlist, user: updateUser} = req.body;
 
     if (found){
 
-        found.name = update.name;
-        found.email = update.email.toLowerCase();
+        found.name = updateUser.name;
+        found.email = updateUser.email.toLowerCase();
         found.gifts = [];
-        delete update.name;
-        delete update.email;
 
-        for (let gift in update){
-            found.gifts.push(update[gift]);
+        for (let gift in giftlist){
+            found.gifts.push(giftlist[gift]);
         }
 
         let user = await found.save();
@@ -96,7 +93,7 @@ router.post('/search', async (req, res) => {
         }
     }
     
-})
+});
 
 router.get('/list', async (req, res) => {
     const peeps = await giftLists.find({});
