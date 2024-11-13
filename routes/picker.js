@@ -96,6 +96,7 @@ router.post('/search', async (req, res) => {
 });
 
 router.get('/list', async (req, res) => {
+    
     const peeps = await giftLists.find({});
 
     res.render('picker/list', {peeps});

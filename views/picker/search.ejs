@@ -1,18 +1,19 @@
-<% layout('layouts/boilerplate') -%>
+<% layout('layouts/pickerboiler') -%>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="card shadow-lg mt-5">
                     <div class="card-header text-center">
-                        <h1 class="h1">Search for List to Edit</h1>
+                        <h1 class="title">Search for List to Edit</h1>
+                        <p>Enter the Email address you used to add your list,<br>or the list ID from The Gift Lists page.</p>
                     </div>
                     <div class="card-body p-4">
-                        <p>Enter the Email address you used to add your list, or the list ID from The Gift Lists page.</p>
                         <form action="/picker/search/" method="post">
-                            <div class="form-floating mb-5">
+                            <div class="form-floating">
                                 <input type="text" class="form-control" name="lookup" id="lookup" placeholder="Enter Email Address or List ID" required>
                                 <label for="lookup">Enter Email Address or List ID</label>
                             </div>
+                            <hr>
                             <div class="btn-group d-flex">
                                 <button class="btn btn-primary">Search</button>
                                 <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
