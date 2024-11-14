@@ -1,39 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dohse Domain</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://mdohse29.github.io/scripts/crtElm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/app.css">
-    <title>Document</title>
-</head>
-<body>
+<% layout('layouts/pickerboiler') -%>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <h1>Confirm Entry</h1>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
                 <div class="card shadow-lg mt-5">
+                    <div class="card-header">
+                        <h1 class="h1">Confirm Gift List</h1>
+                        <p>Thank you for submitting your gift list, <%= user.name %>.<br>Please confirm your gift entries. If you would like to change something, click edit to go back and edit your entries.</p>
+                    </div>
                     <div class="card-body p-4">
-                        <!-- Something here to confirm -->
+                        <% for (let gift of user.gifts) {%>
+                            <p style="margin-left: 25px;"><%= gift %></p>
+                        <% } %>
+                        <hr>
+                        <div class="btn-group d-flex">
+                            <button id="edit" type="button" class="btn btn-danger" loc="/picker/edit/<%= user._id %>" title="Edit list">Edit</button>
+                            <button id="confirm" type="button" class="btn btn-success" loc="/picker/list" title="Confirm gift list!">Confirm</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
-</body>
-</html>
+    <script src="/js/picker/app.confirm.js"></script>

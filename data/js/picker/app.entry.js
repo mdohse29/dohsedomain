@@ -6,11 +6,12 @@ function inputNum(){
 document.querySelector('#cancel').addEventListener('click', () => {
     let inputs = document.querySelectorAll('input');
 
-    for (let i of inputs){
-        i.value = '';
-    }
+    if (location.href.includes('entry'))
+        for (let i of inputs){
+            i.value = '';
+        }
 
-    window.open('/picker', '_self');
+    window.open('/picker/list', '_self');
 });
 
 document.querySelector('#add').addEventListener('click', () => {

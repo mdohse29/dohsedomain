@@ -1,0 +1,38 @@
+/* Basic background color */
+body {
+    background-color: #b22222; /* Festive red */
+    position: relative;
+    overflow: hidden;
+    color: #FFF;
+}
+
+/* Adding sparkles as pseudo-elements */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 2%, rgba(255, 215, 0, 0) 10%) 0 0 / 10% 10%;
+    opacity: 0.4;
+    animation: sparkleAnimation 5s linear infinite;
+    pointer-events: none;
+}
+
+/* Different speeds and directions */
+body::before {
+    animation-duration: 6s;
+}
+
+body::after {
+    animation-duration: 7s;
+    animation-direction: reverse;
+}
+
+/* Keyframes for sparkle movement */
+@keyframes sparkleAnimation {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-50%, -50%); }
+}
+ 
