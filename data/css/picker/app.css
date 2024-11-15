@@ -11,6 +11,11 @@ h1 {
     text-align: center;
 }
 
+p > i {
+    margin-right: 10px;
+    font-size: smaller;
+}
+
 .form-floating {
     margin-top: .5em;
 }
@@ -44,7 +49,9 @@ h1 {
     text-underline-offset: 3px;
 }
 
-
+.peep {
+    font-size: x-large;
+}
 
 .gift-item-img {
     margin-right: 15px;
