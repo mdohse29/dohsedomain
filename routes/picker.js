@@ -76,23 +76,17 @@ router.get('/search', (req, res) => {
 router.post('/search', async (req, res) => {
     let {lookup} = req.body;
 
-    let user = await giftLists.findOne({email:lookup.toLowerCase()});
+    let results = await giftLists.find({email:lookup.toLowerCase()});
 
-    if (user){
-        res.redirect(`/picker/edit/${user._id}`);
-    }else{
-        try{
-            user = await giftLists.findOne({_id: lookup});
-            if (user){
-                res.redirect(`/picker/edit/${lookup.toLowerCase()}`);
-            }else{
-                res.redirect('/picker/list');
-            }
-        }catch(e){
-            res.redirect('/picker/list');
+    if (results.length){
+        if (results.length > 1){
+            res.render('picker/select', {peeps:results});
+        }else{
+            res.redirect(`/picker/edit/${results[0]._id}`);
         }
+    }else{
+        res.redirect('/picker/list');
     }
-    
 });
 
 router.get('/list', async (req, res) => {

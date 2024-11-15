@@ -4,24 +4,26 @@
             <div class="col-lg-7">
                 <div class="card shadow-lg mt-5">
                     <div class="card-header text-center">
-                        <h1 class="title">The Gift Lists</h1>
-                        <p>Just to recap...<br>The maximum amount anyone can spend on any person picked is<br>$75 (tax not included).</p>
-                        <% if (peeps.length) {%>
-                            <p><sub>Each list item below is ready to search for convenience.<br>Just click/tap the item to quick search Google, if you want to.</sub></p>
-                        <% } %>
+                        <h1 class="title">Select a List to Edit</h1>
+                        
                     </div>
                     <div class="card-body p-4">
                         <% if (peeps.length){ %>
                             <% for (let peep of peeps) {%>
                                 <div class="card border shadow mb-1">
                                     <div class="card-body">
-                                        <p class="peep"><i class="bi<%= ((peep.hasBeenPicked) ? ' bi-check-circle-fill text-success' : ' bi-circle') %>" title="<%= ((peep.hasBeenPicked) ? 'Already Picked' : 'Not Picked Yet') %>"></i><%= peep.name %></p>
+                                        <p class="peep"><%= peep.name %></p>
                                         <% for (let gift of peep.gifts) {%>
                                             <span class="gift-item mb-2">
                                                 <img src="/img/listIcon-gift.png" class="d-inline gift-item-img" alt="Gift Icon">
-                                                <a href="https://www.google.com/search?q=<%= gift.replaceAll(' ', '+') %>" target="_blank"><%= gift %></a>
+                                                <%= gift %>
                                             </span>
                                         <% } %>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="btn-group d-flex">
+                                            <a href="/picker/edit/<%= peep._id %>" class="btn btn-warning">Edit List</a>
+                                        </div>
                                     </div>
                                 </div>
                             <% } %>
