@@ -12,6 +12,7 @@ const Schema = new mongoose.Schema({
     },
     gifts: [String]
 });
+
 const giftLists = mongoose.model('giftLists', Schema);
 
 router.get('/', (req, res) => {
@@ -30,7 +31,6 @@ router.post('/entry', async (req,res) => {
         newList.gifts.push(giftlist[gift]);
     }
     let newUser = await newList.save();
-    // res.send(giftlist);
     
     res.redirect(`/picker/confirm/${newUser._id}`);
 });
