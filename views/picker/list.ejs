@@ -15,7 +15,7 @@
                             <% for (let peep of peeps) {%>
                                 <div class="card border shadow mb-1">
                                     <div class="card-body">
-                                        <p class="peep"><i class="bi<%= ((peep.hasBeenPicked) ? ' bi-check-circle-fill text-success' : ' bi-circle') %>" title="<%= ((peep.hasBeenPicked) ? 'Already Picked' : 'Not Picked Yet') %>"></i><%= peep.name %></p>
+                                        <p class="peep"><i class="bi<%= ((peep.hasBeenPicked) ? ' bi-check-circle-fill text-success' : ' bi-circle') %>" title="<%= ((peep.hasBeenPicked) ? 'Has Been Picked' : 'Not Picked Yet') %>"></i><%= peep.name %></p>
                                         <% for (let gift of peep.gifts) {%>
                                             <span class="gift-item mb-2">
                                                 <img src="/img/listIcon-gift.png" class="d-inline gift-item-img" alt="Gift Icon">

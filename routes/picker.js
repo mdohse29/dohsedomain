@@ -39,6 +39,8 @@ router.get('/confirm/:id', async (req, res) => {
     const user = await giftLists.findById(req.params.id);
     if (user){
         res.render('picker/confirm', {user});
+    }else{
+        res.redirect('/picker/list');
     }
 });
 
@@ -46,6 +48,8 @@ router.get('/edit/:id', async (req, res) => {
     const user = await giftLists.findById(req.params.id);
     if (user){
         res.render('picker/edit', {user});
+    }else{
+        res.redirect('/picker/list');
     }
 });
 
